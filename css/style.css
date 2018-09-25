@@ -1,0 +1,175 @@
+body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, tr, td, a, p {
+	margin: 0;
+	padding: 0;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+/*===============#00aef6;#18bee5*/
+
+ul, ol, li {
+	list-style: none;
+}
+
+img {
+	display: block;
+	border: 0;
+}
+
+a {
+	text-decoration: none;
+	display: inline-block;
+	outline: none;
+	color: #394051;
+}
+
+
+.container{
+	position: relative;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.clearfloat{
+	zoom: 1;
+}
+
+.clearfloat:after{
+	display: block;
+	visibility: hidden;
+	content: "";
+	height: 1px;
+	clear: both;
+}
+
+body{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: #00aef6;
+	font-size: 1em;
+}
+table{
+	border: 1px solid transparent;
+	border-radius:1px; /*圆角设置属性*/
+	overflow:hidden; 
+	border-top-left-radius:12px;
+	border-top-right-radius:12px;
+	border-bottom-right-radius:12px;
+	border-bottom-left-radius:12px;
+}
+
+table:before{
+	
+}
+
+.pagetop{
+	position: relative;
+	height: 58%;
+	background: #18bee5;
+}
+
+.pagetop .header{
+	
+}
+
+.pagetop .header img{
+	position: relative;
+	margin: 0 auto;
+	padding-top: 40px;
+}
+
+.pagebot{
+	position: relative;
+	height: 42%;
+	background: #00aef6;
+}
+
+.index-menu{
+	width: 100%
+}
+
+.index-menu #nav{
+	height: 100%;
+	width: 100%;
+	color: #42e8a3;
+	background: #394051dd;
+}
+
+.index-menu #nav span{
+	position: relative;
+	margin: 0 auto;
+}
+
+.index-menu .item-add-btn{
+	position: relative;
+	margin-right: 20px;
+	float: right;
+	color: #42b883;
+}
+
+.index-menu .item-add-btn i {
+	transition: all 0.3s linear;
+}
+
+.index-menu .item-add-btn i:hover {
+	transform: rotate(180deg);
+	transition: all 0.3s linear;
+}
+
+.index-menu tr:first-child{
+	/*margin-top: 20px;*/
+	height: 40px;
+}
+
+.index-menu tr{
+	display: block;
+	overflow: hidden;
+	height: 48px;
+	background: #39405166;
+}
+
+.index-menu td:first-child{
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	width: 120px;
+	height: 100%;
+	margin-right: 20px;
+	color: #2ed;
+	background: #394051aa;
+	font-size: 1.3em;
+}
+
+.index-menu td{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	float: left;
+	height: 100%;
+	padding-right: 10px;
+}
+
+.index-menu .menu-items{
+	display: inline-block;
+}
+
+.menu-items .item-text{
+	padding: 2px 10px 4px 10px;
+	background: #fff;
+	border-radius: 14px;
+}
+
+.menu-items span{
+	position: relative;
+	background: #fff;
+	border-radius: 14px;
+	line-height: 20px;
+}
+
+.menu-items .site-logo{
+	display: inline-block;
+	position: relative;
+	top: 3px;
+	width: 16px;
+	padding: 0 4px;
+}
