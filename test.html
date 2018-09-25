@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <style>
+        #search ul {
+            list-style-type: none;
+            display: block;
+            width: 100px;
+            height: 33px;
+            margin: 0;
+            padding: 0;
+            border: 0px;
+            float: left;
+        }
+        #search li {
+            border: 0px;
+            margin: 0px;
+            padding: 0px;
+        }
+        #search .selected {
+            display: block;
+        }
+        #search form {
+            margin: 0px;
+            padding: 0px;
+        }
+        #search input {
+            height: 30px;
+            width: 400px;
+            margin: 0px;
+        }
+        #search .button {
+            font-size: 17px;
+            font-weight: 600;
+            color: #002D96;
+            height: 30px;
+            width: 110px;
+            margin-left: 50px;
+            background: #e6efc2;
+            opacity: 0.8;
+            border: #7fb80e 1px solid;
+            cursor: pointer;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+<div id="search" align="center">
+    <table>
+        <tr>
+            <td>
+                <ul>
+                    <li style="display:block;"><img width="80" src="https://www.baidu.com/img/bd_logo1.png"/></li>
+                    <li style="display:none;"><img width="80" src="https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png"/></li>
+                    <li style="display:none;"><img width="80" src="https://www.sogou.com/images/logo2014/error180x60.png"/></li>
+                </ul>
+            </td>
+            <td id="from_box" style="padding-left:10px;">
+                <form id="from_baidu" style="display:block" action="http://www.baidu.com/baidu" target="_blank" method="get">
+                    <input name="" type="hidden" value="baidu"/>
+                    <input type="text" name="word"/>
+                    <input class="button" type="submit" value="百度一下" onMouseOver="this.style.opacity='1'" onMouseOut="this.style.opacity='0.7'"/>
+                </form>
+                <form id="from_google" style="display:none" action="http://www.google.com/search" target="_blank" method="get">
+                    <input type="text" name="q"/>
+                    <input class="button" type="submit" value="google搜索" onMouseOver="this.style.opacity='1'" onMouseOut="this.style.opacity='0.7'"/>
+                </form>
+                <form id="from_sougou" style="display:none" action="http://www.sogou.com/web" target="_blank" name="sogou_queryform">
+                    <input type="text" name="query">
+                    <input class="button" type="submit" value="sougou搜索" onMouseOver="this.style.opacity='1'" onMouseOut="this.style.opacity='0.7'"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+<script>
+    var search = document.getElementById("search");
+    var formbox = document.getElementById('from_box');
+    var forms = formbox.getElementsByTagName("form");
+    var ul = search.getElementsByTagName("ul")[0];
+    var li = ul.getElementsByTagName("li");
+    var length = li.length;
+    li[0].onclick = function() {
+        for(var i = 1; i < length; i++) {
+            li[i].style.display = "block";
+        }
+    }
+    var n = 0; //第一个显示表单的位置
+    for(var i = 1; i < length; i++) {
+        li[i].onclick = function(a) {
+            return function() {
+                //交换显示的html内容
+                var temp = li[0].innerHTML;
+                li[0].innerHTML = this.innerHTML;
+                this.innerHTML = temp;
+                for(var j = 1; j < length; j++) {
+                    li[j].style.display ="none";
+                }
+                //交换表单的显示
+                //alert(li[0].innerHTML.substring(37,7));
+                //alert(li[0].innerHTML.indexOf('baidu'));
+                hidden_from(); //隐藏表单
+                if(li[0].innerHTML.indexOf('baidu') > 0) {
+                    document.getElementById('from_baidu').style.display = 'block';
+                } else if(li[0].innerHTML.indexOf('google') > 0) {
+                    document.getElementById('from_google').style.display = 'block';
+                } else if(li[0].innerHTML.indexOf('sougou') > 0) {
+                    document.getElementById('from_sougou').style.display = 'block';
+                }
+                //alert(this.innerHTML);
+                //forms[n].style.display = "none";
+                //forms[a].style.display = "block";
+                //n = a;
+            }
+        }(i);
+        li[i].onmouseover = function() {
+            this.style.border ="#7fb80e 1px solid";
+            this.style.background ="#f2eada";
+        }
+        li[i].onmouseout = function() {
+            this.style.border = "0px";
+            this.style.background = "inherit";
+        }
+    }
+    //隐藏搜索框表单的函数
+    function hidden_from() {
+        for(var j = 0; j < forms.length; j++) {
+            forms[j].style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>
