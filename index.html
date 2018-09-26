@@ -7,80 +7,136 @@
 	<link rel="stylesheet" href="css/fontAwesome.css">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 	<link rel="shortcut icon" href="favicon.ico"> 
-	<script></script>
+	<script src="js/vue.js"></script>
 </head>
 <body>
-	<div class="pagetop">
-		<div class="container">
-			<div class="header"><img src="img/header.png"></div>
+	<div id="body">
+		<div class="pagetop">
+			<div class="container">
+				<div class="header"><img src="img/header.png"></div>
 
-			<div class="search">
-				<div class="searchbar">
-					<form>
-						<input type="text" placeholder="Search...">
-						<button type="submit" class="fa fa-search"></button>
-					</form>
+				<div class="search">
+					<div class="searchbar">
+						<form>
+							<input type="text" placeholder="Get Started Here...">
+							<button type="submit" class="fa fa-search"></button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="pagebot">
-		<div class="container">
+		<div class="pagebot">
+			<div class="container">
 				<table class="index-menu">
-						<tr>
-							<td id="nav">
-								<span>Navgation</span>
-								<a href="javascript:void(0);" class="item-add-btn"><i class="fa fa-plus-square-o"></i></a>
-							</td>
-						</tr>
-						<tr class="clearfloat" >
-							<td>Faverites</td>
-							<td><div class="menu-items">
-								<a class="item-text" href="http://www.google.com">
-									<img class="site-logo" src="http://www.google.com/favicon.ico">
-									<span>Google</span>
-								</a>
-							</div></td>
-							<td><div class="menu-items">
-								<a class="item-text" href="http://www.baidu.com">
-									<img class="site-logo" src="http://www.baidu.com/favicon.ico">
-									<span>Baidu</span>
-								</a>
-							</div></td>
-							<td><div class="menu-items">
-								<a class="item-text" href="https://blog.csdn.net">
-									<img class="site-logo" src="https://blog.csdn.net/favicon.ico">
-									<span>CSDN</span>
-								</a>
-							</div></td>
-						</tr>
-						<tr class="clearfloat" >
-							<td>Tools</td>
-							<td><div class="menu-items">
-								<a class="item-text" href="https://flatuicolors.com/">
-									<img class="site-logo" src="https://flatui.com/favicon.ico">
-									<span>FlatUIcolors</span>
-								</a>
-							</div></td>
-							<td><div class="menu-items">
-								<a class="item-text" href="https://github.com/">
-									<img class="site-logo" src="https://github.com/favicon.ico">
-									<span>Github</span>
-								</a>
-							</div></td>
-						</tr>
-						<tr class="clearfloat" >
-							<td>News</td>
-							<td><div class="menu-items">
-								<a class="item-text" href="https://www.nytimes.com/">
-									<img class="site-logo" src="https://www.nytimes.com/favicon.ico">
-									<span>New York Times</span>
-								</a>
-							</div></td>
-						</tr>
+					<tr>
+						<td id="nav">
+							<span>Navgation</span>
+							<a href="javascript:void(0);" class="item-add-btn" @click="delseen=!delseen">
+								<i class="fa fa-gear"></i>
+							</a>
+						</td>
+					</tr>
+					<tr class="clearfloat" >
+						<td>Favorites</td>
+						<td><div class="menu-item">
+							<a class="item-text" href="http://www.google.com">
+								<img class="site-logo" src="http://www.google.com/favicon.ico">
+								<span>Google</span>
+							</a>
+						</div></td>
+						<td><div class="menu-item">
+							<a class="item-text" href="http://www.baidu.com">
+								<img class="site-logo" src="http://www.baidu.com/favicon.ico">
+								<span>Baidu</span>
+							</a>
+						</div></td>
+						<td><div class="menu-item">
+							<a class="item-text" href="https://blog.csdn.net">
+								<img class="site-logo" src="https://blog.csdn.net/favicon.ico">
+								<span>CSDN</span>
+							</a>
+						</div></td>
+					</tr>
+					<tr class="clearfloat" >
+						<td>Tools</td>
+						<td><div class="menu-item">
+							<a class="item-text" href="https://flatuicolors.com/">
+								<img class="site-logo" src="https://flatui.com/favicon.ico">
+								<span>FlatUIcolors</span>
+							</a>
+						</div></td>
+						<td><div class="menu-item">
+							<a class="item-text" href="https://github.com/">
+								<img class="site-logo" src="https://github.com/favicon.ico">
+								<span>Github</span>
+							</a>
+						</div></td>
+					</tr>
+					<tr class="clearfloat" >
+						<td>News</td>
+						<td><div class="menu-item">
+							<a class="item-text" href="https://www.nytimes.com/">
+								<img class="site-logo" src="https://www.nytimes.com/favicon.ico">
+								<span>New York Times</span>
+							</a>
+						</div></td>
+					</tr>
+					<tr class="clearfloat">
+						<td>Others</td>
+						<td v-for="sc in list"><div class="menu-item">
+							<a :href="sc.link" class="item-text" >
+								<img class="site-logo" :src="sc.icon">
+								<span>{{ sc.name }}</span>
+							</a>
+							<a href="" class="btn-delete fa fa-times" @click.prevent="del()" v-if="delseen"></a>
+						</div></td>
+					</tr>
 				</table>
+			</div>
 		</div>
+<!-- ===============SidebarToggleButton=============== -->
+		<div class="sidebarbtn" id="enterbtn" >
+			<a href="#" @click.prevent="sideToggle"><i class="fa fa-anchor" ></i></a>
+		</div>
+
+<!-- ===============Sidebar================ -->
+		<transition name="sidetrans">
+
+		<div class="sidebar" v-show="showsidebar">
+			<div class="side-header">
+				<h2><i class="fa fa-cog" style="color: #324b4e"></i>&nbsp Settings</h2>
+				<a href="#" class="sidebarbtn" @click.prevent="sideToggle"><i class="fa fa-times"></i></a>
+			</div>
+			<div class="side-menu">
+				<fieldset>
+					<legend>Create A New Shortcut</legend>
+						<span class="fa fa-globe">&nbsp&nbsp</span>
+						<input type="text" placeholder="Enter website name" v-model="name">
+						<br>
+						<span class="fa fa-link">&nbsp&nbsp</span>
+						<input type="text" placeholder="Enter website address" v-model="link" @click="linkfill">
+						<p class="tips">Tip: The address must be starting with 
+							<span style="color: #f33"><b>"https://"</b></span> and ending with <span style="color: #f33"><b>"/"</b></span> or the icon will not be shown properly.</p><br>
+						<p class="tips">Example: https://www.google.com/</p>
+						<br>
+						<label>Group:</label>
+						<select>
+							<option value="Male">Favorites</option>
+							<option value="Female">Tools</option>
+							<option value="Female">News</option>
+							<option value="Female">Others</option>
+						</select>
+						<br>
+						<input id="btn-create" type="button" value="+" @click="createShortcut">
+
+				</fieldset>
+
+
+			</div>
+		</div>
+		</transition>
 	</div>
+		<script src="js/main.js"></script>
 </body>
 </html>
