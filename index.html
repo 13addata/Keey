@@ -8,17 +8,24 @@
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 	<link rel="shortcut icon" href="favicon.ico"> 
 	<script src="js/vue.js"></script>
+	<script src="js/jquery.js"></script>
 </head>
 <body>
-	<div id="body">
+	<div id="body" v-cloak>
 		<div class="pagetop">
 			<div class="container">
 				<div class="header"><img src="img/header.png"></div>
 
 				<div class="search">
 					<div class="searchbar">
-						<form>
-							<input type="text" placeholder="Get Started Here...">
+						<!-- -----------Baidu---------- -->
+						<form action="http://www.baidu.com/baidu" v-if="!google">
+							<input type="text" name=word placeholder="Get Started Here...">
+							<button type="submit" class="fa fa-search"></button>
+						</form>
+						<!-- ----------Google---------- -->
+						<form action="http://www.google.com/search" v-if="google">
+							<input type="text" name=q placeholder="Get Started Here...">
 							<button type="submit" class="fa fa-search"></button>
 						</form>
 					</div>
@@ -33,7 +40,7 @@
 						<th id="nav">
 							<span>Navgation</span>
 							<a href="javascript:void(0);" class="item-add-btn" @click="delseen=!delseen">
-								<i class="fa fa-gear"></i>
+								<i class="fa fa-gear" title="manage shortcuts"></i>
 							</a>
 						</th>
 					</tr>
@@ -84,13 +91,17 @@
 					</tr>
 					<tr class="clearfloat">
 						<td>Others</td>
-						<td v-for="(sc, index) in list"><div class="menu-item">
-							<a :href="sc.link" class="item-text" >
-								<img class="site-logo" :src="sc.icon">
-								<span>{{ sc.name }}</span>
-							</a>
-							<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
-						</div></td>
+
+						<td v-for="(sc, index) in list">
+							<div class="menu-item">
+								<a :href="sc.link" class="item-text" >
+									<img class="site-logo" :src="sc.icon">
+									<span>{{ sc.name }}</span>
+								</a>
+								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+							</div>
+						</td>
+
 					</tr>
 				</table>
 			</div>
@@ -111,6 +122,13 @@
 			</div>
 
 			<div class="side-menu">
+				<div class="side-menu-title">Preference</div>
+				<div class="googlesearch clearfloat">
+					<label>Use Google Search</label>
+					<div class="switch-box">
+						<a href="" class="slider on" onclick="searchtoggle()"  @click.prevent="searchToggle"></a>
+					</div>
+				</div>
 				<fieldset>
 					<legend>Create A New Shortcut</legend>
 						<span class="fa fa-globe">&nbsp&nbsp</span>
@@ -126,10 +144,10 @@
 
 						<label>Group:</label>
 						<select>
-							<option value="Male">Favorites</option>
-							<option value="Female">Tools</option>
-							<option value="Female">News</option>
-							<option value="Female">Others</option>
+							<option value="Favorites">Favorites</option>
+							<option value="Tools">Tools</option>
+							<option value="News">News</option>
+							<option value="Others">Others</option>
 						</select>
 						<br>
 						<button id="btn-create" @click="createShortcut"><i class="fa fa-paper-plane"></i></button>

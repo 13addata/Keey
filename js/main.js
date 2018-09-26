@@ -6,6 +6,8 @@ var app = new Vue({
 		link: '',
 		showPanel: false,
 		delseen: false,
+		google: true,
+		switchBox: "switch-box-slider",
 		list: [
 		{
 			name: '博客园',
@@ -34,5 +36,12 @@ var app = new Vue({
 		del(index) {
 			this.list.splice(index,1);
 		},
+		searchToggle() {
+			this.google = !this.google
+			}
 	},
 })
+
+function searchtoggle(){
+        $('.slider').toggleClass('on');
+    }
