@@ -4,24 +4,24 @@ var app = new Vue({
 	data : {
 		name: '',
 		link: '',
-		showsidebar: true,
+		showPanel: false,
 		delseen: false,
 		list: [
-			{
-				name: '博客园',
-				link: 'https://www.cnblogs.com/',
-				icon: 'https://www.cnblogs.com/favicon.ico'
-			},
-			{
-				name: 'Segmentfault',
-				link: 'https://segmentfault.com/',
-				icon: 'https://segmentfault.com/favicon.ico'
-			}
+		{
+			name: '博客园',
+			link: 'https://www.cnblogs.com/',
+			icon: 'https://www.cnblogs.com/favicon.ico'
+		},
+		{
+			name: 'Segmentfault',
+			link: 'https://segmentfault.com/',
+			icon: 'https://segmentfault.com/favicon.ico'
+		}
 		]
 	},
 	methods : {
 		sideToggle() {
-			this.showsidebar = !this.showsidebar
+			this.showPanel = !this.showPanel
 		},
 		linkfill() {
 			this.link = 'https://'
@@ -32,7 +32,7 @@ var app = new Vue({
 			this.name = this.link ='' 
 		},
 		del(index) {
-			this.list.splice(index,1);//How to get index number ??
-		}
-	}
+			this.list.splice(index,1);
+		},
+	},
 })
