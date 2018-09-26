@@ -84,13 +84,17 @@
 					</tr>
 					<tr class="clearfloat">
 						<td>Others</td>
-						<td v-for="(sc, index) in list"><div class="menu-item">
-							<a :href="sc.link" class="item-text" >
-								<img class="site-logo" :src="sc.icon">
-								<span>{{ sc.name }}</span>
-							</a>
-							<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
-						</div></td>
+
+						<td v-for="(sc, index) in list">
+							<div class="menu-item">
+								<a :href="sc.link" class="item-text" >
+									<img class="site-logo" :src="sc.icon">
+									<span>{{ sc.name }}</span>
+								</a>
+								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+							</div>
+						</td>
+
 					</tr>
 				</table>
 			</div>

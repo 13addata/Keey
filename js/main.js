@@ -6,6 +6,8 @@ var app = new Vue({
 		link: '',
 		showPanel: false,
 		delseen: false,
+		group4: false,
+		group5: true,
 		list: [
 		{
 			name: '博客园',
