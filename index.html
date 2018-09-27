@@ -44,54 +44,8 @@
 						</th>
 					</tr>
 					<tr class="clearfloat" >
-						<td>Favorites</td>
-						<td><div class="menu-item">
-							<a class="item-text" href="http://www.google.com">
-								<img class="site-logo" src="http://www.google.com/favicon.ico">
-								<span>Google</span>
-							</a>
-						</div></td>
-						<td><div class="menu-item">
-							<a class="item-text" href="http://www.baidu.com">
-								<img class="site-logo" src="http://www.baidu.com/favicon.ico">
-								<span>Baidu</span>
-							</a>
-						</div></td>
-						<td><div class="menu-item">
-							<a class="item-text" href="https://blog.csdn.net">
-								<img class="site-logo" src="https://blog.csdn.net/favicon.ico">
-								<span>CSDN</span>
-							</a>
-						</div></td>
-					</tr>
-					<tr class="clearfloat" >
-						<td>Tools</td>
-						<td><div class="menu-item">
-							<a class="item-text" href="https://flatuicolors.com/">
-								<img class="site-logo" src="https://flatui.com/favicon.ico">
-								<span>FlatUIcolors</span>
-							</a>
-						</div></td>
-						<td><div class="menu-item">
-							<a class="item-text" href="https://github.com/">
-								<img class="site-logo" src="https://github.com/favicon.ico">
-								<span>Github</span>
-							</a>
-						</div></td>
-					</tr>
-					<tr class="clearfloat" >
-						<td>News</td>
-						<td><div class="menu-item">
-							<a class="item-text" href="https://www.nytimes.com/">
-								<img class="site-logo" src="https://www.nytimes.com/favicon.ico">
-								<span>New York Times</span>
-							</a>
-						</div></td>
-					</tr>
-					<tr class="clearfloat">
-						<td>Others</td>
-
-						<td v-for="(sc, index) in list">
+						<td>Favorite</td>
+						<td v-for="(sc, index) in list" v-if="sc.group === 'Favorite'">
 							<div class="menu-item">
 								<a :href="sc.link" class="item-text" >
 									<img class="site-logo" :src="sc.icon">
@@ -100,7 +54,54 @@
 								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
 							</div>
 						</td>
-
+					</tr>
+					<tr class="clearfloat" >
+						<td>Social</td>
+						<td v-for="(sc, index) in list" v-if="sc.group === 'Social'">
+							<div class="menu-item">
+								<a :href="sc.link" class="item-text" >
+									<img class="site-logo" :src="sc.icon">
+									<span>{{ sc.name }}</span>
+								</a>
+								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+							</div>
+						</td>
+					</tr>
+					<tr class="clearfloat" >
+						<td>Academy</td>
+						<td v-for="(sc, index) in list" v-if="sc.group === 'Academy'">
+							<div class="menu-item">
+								<a :href="sc.link" class="item-text" >
+									<img class="site-logo" :src="sc.icon">
+									<span>{{ sc.name }}</span>
+								</a>
+								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+							</div>
+						</td>
+					</tr>
+					<tr class="clearfloat">
+						<td>News</td>
+						<td v-for="(sc, index) in list" v-if="sc.group === 'News'">
+							<div class="menu-item">
+								<a :href="sc.link" class="item-text" >
+									<img class="site-logo" :src="sc.icon">
+									<span>{{ sc.name }}</span>
+								</a>
+								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+							</div>
+						</td>
+					</tr>
+					<tr class="clearfloat">
+						<td>Entertainment</td>
+						<td v-for="(sc, index) in list" v-if="sc.group === 'Entertainment'">
+							<div class="menu-item">
+								<a :href="sc.link" class="item-text" >
+									<img class="site-logo" :src="sc.icon">
+									<span>{{ sc.name }}</span>
+								</a>
+								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+							</div>
+						</td>
 					</tr>
 				</table>
 			</div>
@@ -139,11 +140,12 @@
 						<br>
 
 						<label>Group:</label>
-						<select>
-							<option value="Favorites">Favorites</option>
-							<option value="Tools">Tools</option>
+						<select v-model="group" >
+							<option value="Favorite">Favorite</option>
+							<option value="Social">Social</option>
+							<option value="Academy">Academy</option>
 							<option value="News">News</option>
-							<option value="Others">Others</option>
+							<option value="Entertainment">Entertainment</option>
 						</select>
 						<br>
 						<button id="btn-create" @click="createShortcut"><i class="fa fa-paper-plane"></i></button>
