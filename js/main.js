@@ -4,6 +4,7 @@ var app = new Vue({
 	data : {
 		name: '',
 		link: '',
+		group: 'Favorite',
 		showPanel: false,
 		delseen: false,
 		list: [
@@ -68,7 +69,7 @@ var app = new Vue({
 			group: 'Entertainment'
 		},
 		{
-			name: 'netflix',
+			name: 'Netflix',
 			link: 'https://www.netflix.com/',
 			icon: 'https://www.netflix.com/favicon.ico',
 			group: 'Entertainment'
@@ -83,9 +84,9 @@ var app = new Vue({
 			this.link = 'https://'
 		},
 		createShortcut() {
-			var sc = { name: this.name, link: this.link, icon: this.link+"favicon.ico"}
+			var sc = { name: this.name, link: this.link, icon: this.link+"favicon.ico", group: this.group}
 			this.list.push(sc)
-			this.name = this.link ='' 
+			this.name = this.link =''
 		},
 		del(index) {
 			this.list.splice(index,1);

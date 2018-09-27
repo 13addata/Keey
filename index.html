@@ -130,11 +130,12 @@
 						<br>
 
 						<label>Group:</label>
-						<select>
-							<option value="Male">Favorites</option>
-							<option value="Female">Tools</option>
-							<option value="Female">News</option>
-							<option value="Female">Others</option>
+						<select v-model="group" >
+							<option value="Favorite">Favorite</option>
+							<option value="Social">Social</option>
+							<option value="Academy">Academy</option>
+							<option value="News">News</option>
+							<option value="Entertainment">Entertainment</option>
 						</select>
 						<br>
 						<button id="btn-create" @click="createShortcut"><i class="fa fa-paper-plane"></i></button>
