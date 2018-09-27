@@ -25,6 +25,9 @@ var app = new Vue({
 		sideToggle() {
 			this.showPanel = !this.showPanel
 		},
+		panelClose() {
+			this.showPanel = false
+		},
 		linkfill() {
 			this.link = 'https://'
 		},
@@ -39,6 +42,26 @@ var app = new Vue({
 		searchToggle() {
 			this.google = !this.google
 			}
+	},
+	directives: {        
+		clickoutside:{            
+			bind:function(el,binding,vnode){                
+				function documentHandler(e){                    
+					if(el.contains(e.target)){                        
+						return false;                    
+					}                    
+					if(binding.expression){                        
+						binding.value(e)                    
+					}                
+				}                
+				el._vueClickOutside_ = documentHandler;                
+				document.addEventListener('click',documentHandler);            
+			},            
+			unbind:function(el,binding){                
+				document.removeEventListener('click',el._vueClickOutside_);                
+				delete el._vueClickOutside_;            
+			}        
+		}    
 	},
 })
 

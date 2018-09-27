@@ -1,7 +1,21 @@
+@font-face {
+	font-family: 'SourceSansPro';
+    src: url('../fonts/SourceSansPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'SourceSansPro-Light';
+    src: url('../fonts/SourceSansPro-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, tr, td, a, p {
 	margin: 0;
 	padding: 0;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'SourceSansPro', sans-serif;
 }
 
 /*===============#00aef6;#18bee5 #0099ff；#ff0033；#a5ed53；#ffd353*/
@@ -250,8 +264,6 @@ table {
 
 #enterbtn {
 	background: #324b4e;
-}
-#enterbtn a{
 	color: #42e8a3;
 }
 #btn-create {
