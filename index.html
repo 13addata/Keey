@@ -5,20 +5,26 @@
 	<title>Keey</title>
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/fontAwesome.css">
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 	<link rel="shortcut icon" href="favicon.ico"> 
 	<script src="js/vue.js"></script>
+	<script src="js/jquery.js"></script>
 </head>
 <body>
-	<div id="body">
+	<div id="body" v-cloak>
 		<div class="pagetop">
 			<div class="container">
 				<div class="header"><img src="img/header.png"></div>
 
 				<div class="search">
 					<div class="searchbar">
-						<form>
-							<input type="text" placeholder="Get Started Here...">
+						<!-- -----------Baidu---------- -->
+						<form action="http://www.baidu.com/baidu" v-if="!google">
+							<input type="text" name=word placeholder="Get Started Here...">
+							<button type="submit" class="fa fa-search"></button>
+						</form>
+						<!-- ----------Google---------- -->
+						<form action="http://www.google.com/search" v-if="google">
+							<input type="text" name=q placeholder="Get Started Here...">
 							<button type="submit" class="fa fa-search"></button>
 						</form>
 					</div>
@@ -33,7 +39,7 @@
 						<th id="nav">
 							<span>Navgation</span>
 							<a href="javascript:void(0);" class="item-add-btn" @click="delseen=!delseen">
-								<i class="fa fa-gear"></i>
+								<i class="fa fa-gear" title="manage shortcuts"></i>
 							</a>
 						</th>
 					</tr>
@@ -100,15 +106,12 @@
 				</table>
 			</div>
 		</div>
+		<div v-clickoutside="panelClose">
 <!-- ===============PanelToggleButton=============== -->
-		<div class="panelbtn" id="enterbtn" >
-			<a href="#" @click.prevent="sideToggle"><i class="fa fa-anchor" ></i></a>
-		</div>
-
+			<a href="#" @click.prevent="sideToggle" class="panelbtn" id="enterbtn"><i class="fa fa-anchor" ></i></a>
 <!-- ===============Panel================ -->
-		<transition name="sidetrans">
-
-		<div class="panel" v-show="showPanel">
+		
+		<transition name="sidetrans"><div class="panel" v-show="showPanel">
 
 			<div class="side-header">
 				<h3><i class="fa fa-cog" style="color: #324b4e"></i>&nbsp Settings</h2>
@@ -116,6 +119,13 @@
 			</div>
 
 			<div class="side-menu">
+				<div class="side-menu-title">Preference</div>
+				<div class="googlesearch clearfloat">
+					<label>Use Google Search</label>
+					<div class="switch-box">
+						<a href="" class="slider on" onclick="searchtoggle()"  @click.prevent="searchToggle"></a>
+					</div>
+				</div>
 				<fieldset>
 					<legend>Create A New Shortcut</legend>
 						<span class="fa fa-globe">&nbsp&nbsp</span>
@@ -141,8 +151,8 @@
 						<button id="btn-create" @click="createShortcut"><i class="fa fa-paper-plane"></i></button>
 				</fieldset>
 			</div>
+		</div></transition>
 		</div>
-		</transition>
 	</div>
 	<script src="js/main.js"></script>
 </body>
