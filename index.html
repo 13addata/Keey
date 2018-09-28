@@ -11,10 +11,10 @@
 </head>
 <body>
 	<div id="body" v-cloak>
+		<div class="headeradj"></div>
 		<div class="pagetop">
 			<div class="container">
 				<div class="header"><img src="img/header.png"></div>
-
 				<div class="search">
 					<div class="searchbar">
 						<!-- -----------Baidu---------- -->
@@ -29,6 +29,7 @@
 						</form>
 					</div>
 				</div>
+				<div class="midadj"></div>
 			</div>
 		</div>
 
@@ -36,11 +37,25 @@
 			<div class="container">
 				<table class="index-menu">
 					<tr>
-						<th id="nav">
+						<th>
 							<span>Navgation</span>
-							<a href="javascript:void(0);" class="item-add-btn" @click="delseen=!delseen">
+							<a href="" class="conf-btn" @click.prevent="delseen=!delseen">
 								<i class="fa fa-gear" title="manage shortcuts"></i>
 							</a>
+							<transition name="navtip">
+								<ul class="navtip" v-if="delseen">
+									<li><a href=""><i class="fa fa-user-circle navtip-icon"></i>PROFILE</a></li>
+									<li><a href="" @click.prevent="tools=!tools">
+										<i class="fa fa-square-o navtip-icon"></i>
+										<i class="fa fa-check-square-o navtip-icon" v-if="tools"></i>TOOLS
+									</a></li>
+									<li><a href="" @click.prevent="others=!others">
+										<i class="fa fa-square-o navtip-icon"></i>
+										<i class="fa fa-check-square-o navtip-icon" v-if="others"></i>OTHERS
+									</a></li>
+									<a href="" id="close" @click.prevent="delseen=!delseen"><i class="fa fa-times"></i></a>
+								</ul>
+							</transition>
 						</th>
 					</tr>
 					<tr class="clearfloat" >
@@ -103,6 +118,30 @@
 							</div>
 						</td>
 					</tr>
+					<tr class="clearfloat" v-if="tools">
+						<td>Tools</td>
+						<td v-for="(sc, index) in list" v-if="sc.group === 'Tools'">
+							<div class="menu-item">
+								<a :href="sc.link" class="item-text" >
+									<img class="site-logo" :src="sc.icon">
+									<span>{{ sc.name }}</span>
+								</a>
+								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+							</div>
+						</td>
+					</tr>
+					<tr class="clearfloat" v-if="others">
+						<td>Others</td>
+						<td v-for="(sc, index) in list" v-if="sc.group === 'Others'">
+							<div class="menu-item">
+								<a :href="sc.link" class="item-text" >
+									<img class="site-logo" :src="sc.icon">
+									<span>{{ sc.name }}</span>
+								</a>
+								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+							</div>
+						</td>
+					</tr>
 				</table>
 			</div>
 		</div>
@@ -111,16 +150,16 @@
 			<a href="#" @click.prevent="sideToggle" class="panelbtn" id="enterbtn"><i class="fa fa-anchor" ></i></a>
 <!-- ===============Panel================ -->
 		
-		<transition name="sidetrans"><div class="panel" v-show="showPanel">
-
+		<transition name="sidetrans">
+			<div class="panel" v-show="showPanel">
 			<div class="side-header">
-				<h3><i class="fa fa-cog" style="color: #324b4e"></i>&nbsp Settings</h2>
+				<h3><i class="fa fa-cog" style="color: #324b4e"></i>&nbsp SETTINGS</h2>
 				<a href="#" class="panelbtn" @click.prevent="sideToggle"><i class="fa fa-times"></i></a>
 			</div>
 
 			<div class="side-menu">
 				<div class="side-menu-title">Preference</div>
-				<div class="googlesearch clearfloat">
+				<div class="side-menu-item clearfloat">
 					<label>Use Google Search</label>
 					<div class="switch-box">
 						<a href="" class="slider on" onclick="searchtoggle()"  @click.prevent="searchToggle"></a>
@@ -139,19 +178,22 @@
 						<p class="tips">Example: https://www.google.com/</p>
 						<br>
 
-						<label>Group:</label>
 						<select v-model="group" >
+							<option value="void">--Select Group--</option>
 							<option value="Favorite">Favorite</option>
 							<option value="Social">Social</option>
 							<option value="Academy">Academy</option>
 							<option value="News">News</option>
 							<option value="Entertainment">Entertainment</option>
+							<option value="Tools">Tools</option>
+							<option value="Others">Others</option>
 						</select>
 						<br>
 						<button id="btn-create" @click="createShortcut"><i class="fa fa-paper-plane"></i></button>
 				</fieldset>
 			</div>
-		</div></transition>
+			</div>
+		</transition>
 		</div>
 	</div>
 	<script src="js/main.js"></script>

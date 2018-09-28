@@ -4,7 +4,9 @@ var app = new Vue({
 	data : {
 		name: '',
 		link: '',
-		group: 'Favorite',
+		group: 'void',
+		tools: false,
+		others: false,
 		showPanel: false,
 		delseen: false,
 		google: true,
@@ -79,6 +81,9 @@ var app = new Vue({
 		]
 	},
 	methods : {
+		othersCk() {
+			this.others = !this.others
+		},
 		sideToggle() {
 			this.showPanel = !this.showPanel
 		},
