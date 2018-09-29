@@ -18,18 +18,17 @@
 				<div class="search">
 					<div class="searchbar">
 						<!-- -----------Baidu---------- -->
-						<form action="http://www.baidu.com/baidu" v-if="!google">
-							<input type="text" name=word placeholder="Get Started Here...">
-							<button type="submit" class="fa fa-search"></button>
+						<form action="http://www.baidu.com/baidu" v-if="!google" v-clickoutside="iblur">
+							<input :class="{ 'inputFocus':isF }" @click="ifocus" type="text" name=word placeholder="Get Started Here...">
+							<button type="submit" class="fa fa-search" @click="ifocus"></button>
 						</form>
 						<!-- ----------Google---------- -->
-						<form action="http://www.google.com/search" v-if="google">
-							<input type="text" name=q placeholder="Get Started Here...">
-							<button type="submit" class="fa fa-search"></button>
+						<form action="http://www.google.com/search" v-if="google" v-clickoutside="iblur">
+							<input :class="{ 'inputFocus':isF }" @click="ifocus" type="text" name=q placeholder="Get Started Here...">
+							<button type="submit" class="fa fa-search" @click="ifocus"></button>
 						</form>
 					</div>
 				</div>
-				<div class="midadj"></div>
 			</div>
 		</div>
 
@@ -147,14 +146,14 @@
 		</div>
 		<div v-clickoutside="panelClose">
 <!-- ===============PanelToggleButton=============== -->
-			<a href="#" @click.prevent="sideToggle" class="panelbtn" id="enterbtn"><i class="fa fa-anchor" ></i></a>
+			<a href="#" @click.prevent="showPanel = !showPanel" class="panelbtn" id="enterbtn"><i class="fa fa-anchor" ></i></a>
 <!-- ===============Panel================ -->
 		
 		<transition name="sidetrans">
 			<div class="panel" v-show="showPanel">
 			<div class="side-header">
 				<h3><i class="fa fa-cog" style="color: #324b4e"></i>&nbsp SETTINGS</h2>
-				<a href="#" class="panelbtn" @click.prevent="sideToggle"><i class="fa fa-times"></i></a>
+				<a href="#" class="panelbtn" @click.prevent="showPanel = !showPanel"><i class="fa fa-times"></i></a>
 			</div>
 
 			<div class="side-menu">
@@ -162,7 +161,7 @@
 				<div class="side-menu-item clearfloat">
 					<label>Use Google Search</label>
 					<div class="switch-box">
-						<a href="" class="slider on" onclick="searchtoggle()"  @click.prevent="searchToggle"></a>
+						<a href="" class="slider on" onclick="searchtoggle()"  @click.prevent="google = !google"></a>
 					</div>
 				</div>
 				<fieldset>
@@ -171,7 +170,7 @@
 						<input type="text" placeholder="Enter website name" v-model="name">
 						<br>
 						<span class="fa fa-link">&nbsp&nbsp</span>
-						<input type="text" placeholder="Enter website address" v-model="link" @click="linkfill">
+						<input type="text" placeholder="Enter website address" v-model="link" @focus="linkfill">
 
 						<p class="tips">Tip: <br>The address must begins with 
 							<span style="color: #fff"><b>"https://"</b></span> and ends with <span style="color: #fff"><b>"/"</b></span> or the icon will not be shown properly.</p><br>

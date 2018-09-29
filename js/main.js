@@ -10,6 +10,7 @@ var app = new Vue({
 		showPanel: false,
 		delseen: false,
 		google: true,
+		isF: false,
 		switchBox: "switch-box-slider",
 		list: [
 		{
@@ -81,12 +82,6 @@ var app = new Vue({
 		]
 	},
 	methods : {
-		othersCk() {
-			this.others = !this.others
-		},
-		sideToggle() {
-			this.showPanel = !this.showPanel
-		},
 		panelClose() {
 			this.showPanel = false
 		},
@@ -101,9 +96,12 @@ var app = new Vue({
 		del(index) {
 			this.list.splice(index,1);
 		},
-		searchToggle() {
-			this.google = !this.google
-			}
+		ifocus() {
+			this.isF = true
+		},
+		iblur() {
+			this.isF = false
+		},
 	},
 	directives: {        
 		clickoutside:{            
@@ -129,4 +127,4 @@ var app = new Vue({
 
 function searchtoggle(){
         $('.slider').toggleClass('on');
-    }
+}
