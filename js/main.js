@@ -12,75 +12,12 @@ var app = new Vue({
 		google: true,
 		isF: false,
 		switchBox: "switch-box-slider",
-		list: [
-		{
-			name: 'Google',
-			link: 'https://www.google.com/',
-			icon: 'https://www.google.com/favicon.ico',
-			group: 'Favorite'
-		},
-		{
-			name: 'Baidu',
-			link: 'https://www.baidu.com/',
-			icon: 'https://www.baidu.com/favicon.ico',
-			group: 'Favorite'
-		},
-		{
-			name: 'Facebook',
-			link: 'https://facebook.com/',
-			icon: 'https://facebook.com/favicon.ico',
-			group: 'Social'
-		},
-		{
-			name: 'Twitter',
-			link: 'https://twitter.com/',
-			icon: 'https://twitter.com/favicon.ico',
-			group: 'Social'
-		},
-		{
-			name: 'Instagram',
-			link: 'https://www.Instagram.com/',
-			icon: 'https://www.Instagram.com/favicon.ico',
-			group: 'Social'
-		},
-		{
-			name: '博客园',
-			link: 'https://www.cnblogs.com/',
-			icon: 'https://www.cnblogs.com/favicon.ico',
-			group: 'Academy'
-		},
-		{
-			name: 'Segmentfault',
-			link: 'https://www.segmentfault.com/',
-			icon: 'https://www.segmentfault.com/favicon.ico',
-			group: 'Academy'
-		},
-		{
-			name: 'Vue.js',
-			link: 'https://vuejs.org/v2/guide/',
-			icon: 'https://vuejsexamples.com/favicon.ico',
-			group: 'Academy'
-		},
-		{
-			name: 'New York Times',
-			link: 'https://www.nytimes.com/',
-			icon: 'https://www.nytimes.com/favicon.ico',
-			group: 'News'
-		},
-		{
-			name: 'Youtube',
-			link: 'https://www.youtube.com/',
-			icon: 'https://www.youtube.com/favicon.ico',
-			group: 'Entertainment'
-		},
-		{
-			name: 'Netflix',
-			link: 'https://www.netflix.com/',
-			icon: 'https://www.netflix.com/favicon.ico',
-			group: 'Entertainment'
-		},
-		]
+		list:[],
 	},
+	created() {
+		this.getList()
+	},
+
 	methods : {
 		panelClose() {
 			this.showPanel = false
@@ -102,6 +39,20 @@ var app = new Vue({
 		iblur() {
 			this.isF = false
 		},
+		getList() {
+			this.$http.get('http://localhost:3000/data').then(result => {
+				if(result.status === 200) {
+					this.list = result.body.list
+				}else{
+					console.log('fail to get data from server')
+				}
+			})
+		},
+		// getList() {
+		// 	this.$http.get('http://localhost:3000/data').then(function(result) {
+		// 		console.log(result.body.list)
+		// 	})
+		// },
 	},
 	directives: {        
 		clickoutside:{            
