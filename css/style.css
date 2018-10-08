@@ -18,7 +18,7 @@ body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, tr, td, a, p {
 	font-family: 'SourceSansPro', sans-serif;
 }
 
-/*===============#00aef6;#18bee5 #0099ff；#ff0033；#a5ed53；#ffd353*/
+/*===============#00aef6;#18bee5 #0099ff；#ff0033；#a5ed53；#ffd353;#f6f8fa;#00c4b6;#99a9bf*/
 
 
 ul, ol, li {
@@ -43,7 +43,7 @@ select {
 	border-radius: 4px;
 	outline: none;
 	background: inherit;
-	color: #fff;
+	color: #324b4e;
 }
 
 option {
@@ -350,7 +350,7 @@ table {
 	height: 46px;
 	border: 0px solid transparent;
 	border-radius: 50%;
-	background: #f51157;
+	background: #00c4b6;
 	color: #fff;
 	font-size: 20px;
 	line-height: 20px;
@@ -443,14 +443,14 @@ table {
 	right: 0;
 	width: 20%;
 	height: 100%;
-	color: #fff;
-	background:#38c0f5;
+	color: #324b4e;
+	background:#f6f8fa;
 	box-shadow: -4px 4px 12px 0 rgba(0, 0, 0, 0.2);
 }
 
 .panel .side-header {
 	padding: 24px;
-	background: #00aef6;
+	background: #00c4b6;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -470,7 +470,7 @@ table {
 	bottom: 0;
 	margin: 20px 20px 40px 10px;
 	border-radius: 8px;
-	border:1px solid #fff;
+	border:1px solid #324b4e;
 	padding: 10px 8px 40px 8px;
 }
 
@@ -479,16 +479,16 @@ table {
 	width: 80%;
 	margin: 10px 0;
 	border: none;
-	border-bottom: 1px solid #fff;
-	color: #eee;
+	border-bottom: 1px solid #324b4e;
+	color: #324b4e;
 }
 .panel .side-menu input::-webkit-input-placeholder { /* WebKit browsers */
-    color:#eee;
+    color:#324b4e;
     border: none;
 }
 
 .panel .side-menu input:focus{
-	color: #fff;
+	color: #292929;
 }
 
 .panel .side-menu .tips {
