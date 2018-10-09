@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href="css/fontAwesome.css">
 	<link rel="shortcut icon" href="favicon.ico"> 
 	<script src="js/vue.js"></script>
-	<script src="js/jquery.js"></script>
 </head>
 <body>
 	<div id="body" v-cloak>
@@ -24,7 +23,7 @@
 						</form>
 						<!-- ----------Google---------- -->
 						<form action="http://www.google.com/search" v-if="google" v-clickoutside="iblur">
-							<input :class="{ 'inputFocus':isF }" @click="ifocus" type="text" name=q placeholder="Get Started Here...">
+							<input :class="{ 'inputFocus':isF }" @click="ifocus" type="text" name=q placeholder="Everything Starts Here...">
 							<button type="submit" class="fa fa-search" @click="ifocus"></button>
 						</form>
 					</div>
@@ -38,21 +37,21 @@
 					<tr>
 						<th>
 							<span>Navgation</span>
-							<a href="" class="conf-btn" @click.prevent="delseen=!delseen">
+							<a href="javascrip:void(0);" class="conf-btn" @click.prevent="delseen=!delseen">
 								<i class="fa fa-gear" title="manage shortcuts"></i>
 							</a>
 							<transition name="navtip">
 								<ul class="navtip" v-if="delseen">
-									<li><a href=""><i class="fa fa-user-circle navtip-icon"></i>PROFILE</a></li>
-									<li><a href="" @click.prevent="tools=!tools">
+									<li><a href="javascrip:void(0);"><i class="fa fa-user-circle navtip-icon"></i>PROFILE</a></li>
+									<li><a href="javascrip:void(0);" @click.prevent="tools=!tools">
 										<i class="fa fa-square-o navtip-icon"></i>
 										<i class="fa fa-check-square-o navtip-icon" v-if="tools"></i>TOOLS
 									</a></li>
-									<li><a href="" @click.prevent="others=!others">
+									<li><a href="javascrip:void(0);" @click.prevent="others=!others">
 										<i class="fa fa-square-o navtip-icon"></i>
 										<i class="fa fa-check-square-o navtip-icon" v-if="others"></i>OTHERS
 									</a></li>
-									<a href="" id="close" @click.prevent="delseen=!delseen"><i class="fa fa-times"></i></a>
+									<a href="javascrip:void(0);" id="close" @click.prevent="delseen=!delseen"><i class="fa fa-times"></i></a>
 								</ul>
 							</transition>
 						</th>
@@ -65,7 +64,7 @@
 									<img class="site-logo" :src="sc.icon">
 									<span>{{ sc.name }}</span>
 								</a>
-								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+								<a href="javascrip:void(0);" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
 							</div>
 						</td>
 					</tr>
@@ -77,7 +76,7 @@
 									<img class="site-logo" :src="sc.icon">
 									<span>{{ sc.name }}</span>
 								</a>
-								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+								<a href="javascrip:void(0);" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
 							</div>
 						</td>
 					</tr>
@@ -89,7 +88,7 @@
 									<img class="site-logo" :src="sc.icon">
 									<span>{{ sc.name }}</span>
 								</a>
-								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+								<a href="javascrip:void(0);" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
 							</div>
 						</td>
 					</tr>
@@ -101,7 +100,7 @@
 									<img class="site-logo" :src="sc.icon">
 									<span>{{ sc.name }}</span>
 								</a>
-								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+								<a href="javascrip:void(0);" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
 							</div>
 						</td>
 					</tr>
@@ -113,7 +112,7 @@
 									<img class="site-logo" :src="sc.icon">
 									<span>{{ sc.name }}</span>
 								</a>
-								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+								<a href="javascrip:void(0);" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
 							</div>
 						</td>
 					</tr>
@@ -125,7 +124,7 @@
 									<img class="site-logo" :src="sc.icon">
 									<span>{{ sc.name }}</span>
 								</a>
-								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+								<a href="javascrip:void(0);" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
 							</div>
 						</td>
 					</tr>
@@ -137,7 +136,7 @@
 									<img class="site-logo" :src="sc.icon">
 									<span>{{ sc.name }}</span>
 								</a>
-								<a href="" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
+								<a href="javascrip:void(0);" class="btn-delete fa fa-times" @click.prevent="del(index)" v-if="delseen"></a>
 							</div>
 						</td>
 					</tr>
@@ -146,14 +145,14 @@
 		</div>
 		<div v-clickoutside="panelClose">
 <!-- ===============PanelToggleButton=============== -->
-			<a href="#" @click.prevent="showPanel = !showPanel" class="panelbtn" id="enterbtn"><i class="fa fa-anchor" ></i></a>
+			<a href="javascrip:void(0);" @click.prevent="showPanel = !showPanel" class="panelbtn" id="enterbtn"><i class="fa fa-anchor" ></i></a>
 <!-- ===============Panel================ -->
 		
 		<transition name="sidetrans">
 			<div class="panel" v-show="showPanel">
 			<div class="side-header">
-				<h3><i class="fa fa-cog" style="color: #324b4e"></i>&nbsp SETTINGS</h2>
-				<a href="#" class="panelbtn" @click.prevent="showPanel = !showPanel"><i class="fa fa-times"></i></a>
+				<h3><i class="fa fa-cog" style="color: #324b4e"></i>&nbsp SETTINGS</h3>
+				<a href="javascrip:void(0);" class="panelbtn" @click.prevent="showPanel = !showPanel"><i class="fa fa-times"></i></a>
 			</div>
 
 			<div class="side-menu">
@@ -161,7 +160,7 @@
 				<div class="side-menu-item clearfloat">
 					<label>Use Google Search</label>
 					<div class="switch-box">
-						<a href="" class="slider on" onclick="searchtoggle()"  @click.prevent="google = !google"></a>
+            		<a href="javascrip:void(0);" class="slider" :class="{ on: google }" @click.prevent="google = !google"></a>
 					</div>
 				</div>
 				<fieldset>

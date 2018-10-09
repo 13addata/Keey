@@ -124,7 +124,3 @@ var app = new Vue({
 		}    
 	},
 })
-
-function searchtoggle(){
-        $('.slider').toggleClass('on');
-}
